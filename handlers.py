@@ -8,13 +8,15 @@ router = Router()
 @router.message(Command("start"))
 async def start(message: Message):
     await message.answer(f"Привет, {message.from_user.username}, меня зовут Coursbot! Я смогу подсказать тебе текущий курс валюты. Выбери интересующую тебя валюту ниже!", reply_markup=kb.all_valuete_kb.as_markup())
-@router.callback_query(F.data == 'backmenu')
-async def a(clbck: CallbackQuery):
-    await clbck.message.answer(f"Привет, меня зовут Coursbot! Я смогу подсказать тебе текущий курс валюты. Выбери интересующую тебя валюту ниже!", reply_markup=kb.all_valuete_kb.as_markup())
 
-for n in kb.all_valuete_kb:
-    @router.callback_query(F.data == f'{n}')               # Попытка сделать обработку InlineButton через цикл, лучше делать вручную
-    async def a(clbck: CallbackQuery):
-        for i in kb.currency:
-            if F.data == i:
-                await clbck.message.edit_text(f'{i}', reply_markup=kb.all_valuete_kb.as_markup())
+
+@router.callback_query(F.data == 'backmenu')
+async def backmenu(clbck: CallbackQuery):
+    await clbck.message.edit_text(f"Привет, меня зовут Coursbot! Я смогу подсказать тебе текущий курс валюты. Выбери интересующую тебя валюту ниже!", reply_markup=kb.all_valuete_kb.as_markup())
+
+
+
+
+
+# F.data == 'a'
+# await clbck.message.edit_text('a=1', reply_markup=kb.all_valuete_kb.as_markup())
