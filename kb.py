@@ -1,7 +1,10 @@
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 
-from parser import currency
+import parser
+
+currency = parser.createCurrency()
+print(currency)
 
 all_valuete_kb = InlineKeyboardBuilder()
 
