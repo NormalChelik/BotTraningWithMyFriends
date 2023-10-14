@@ -2,7 +2,7 @@ from aiogram import Bot, Dispatcher
 from aiogram.fsm.storage.memory import MemoryStorage
 import asyncio
 
-from handlers import router
+from handlers_ import router
 
 token = open("token.txt").readline()
 
