@@ -18,7 +18,10 @@ r = requests.get('https://www.cbr.ru/scripts/XML_daily.asp')
 root = ET.fromstring(r.text)
 d = dictify(root)
 
-print(d['ValCurs']['Valute'][0])
-print(d['ValCurs']['Valute'][0]['Name'][0]['text'])
-print(d['ValCurs']['Valute'][0]['Value'][0]['text'])
+currency = {}
+
+for i in range(len(d['ValCurs']['Valute'])):
+    currency[f"{d['ValCurs']['Valute'][i]['Name'][0]['text']}"] = d['ValCurs']['Valute'][i]['Value'][0]['text']
+
+
 
