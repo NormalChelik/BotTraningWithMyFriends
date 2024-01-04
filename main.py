@@ -4,7 +4,7 @@ import asyncio
 
 from handlers_ import router
 
-token = open("token.txt").readline()
+token = open("token.txt").readline().strip()
 
 async def main() -> None:
     bot = Bot(token=token, parse_mode="Markdown")

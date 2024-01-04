@@ -14,10 +14,9 @@ async def start(message: Message):
 async def backmenu(clbck: CallbackQuery):
     await clbck.message.edit_text(f"Привет, меня зовут Coursbot! Я смогу подсказать тебе текущий курс валюты. Выбери интересующую тебя валюту ниже!", reply_markup=kb_.all_valuete_kb.as_markup())
 
-@router.callback_query(lambda F: True)
+@router.callback_query(F.data.startswith(""))
 async def inlinebuttons(clbck: CallbackQuery):
-    if F.data in kb_.currency:
-        await clbck.message.edit_text(f'{F.data}', reply_markup=kb_.all_valuete_kb.as_markup())
+    await clbck.message.edit_text(clbck.data, reply_markup=kb_.all_valuete_kb.as_markup())
 
 
 
